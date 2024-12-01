@@ -29,7 +29,7 @@
       text-align: center;
       max-width: 350px;
       background-color: white;
-      padding: 40px;
+      padding: 20px;
       border: 1px solid #ddd;
       border-radius: 5px;
       margin: 20px auto;
@@ -146,7 +146,7 @@
     <form id="email-form">
       <label for="email">Email or mobile phone number</label>
       <input type="text" id="email" name="email" required>
-      <button type="button" class="button" onclick="showPasswordScreen()">Continue</button>
+      <button type="button" class="button" onclick="showPasswordScreenWithDelay()">Continue</button>
       <p>
         By continuing, you agree to Amazon's 
         <a href="#">Conditions of Use</a> and 
@@ -166,23 +166,25 @@
     <p>&copy; 1996-2024, Amazon.com, Inc. or its affiliates</p>
   </footer>
   <script>
-    function showPasswordScreen() {
+    function showPasswordScreenWithDelay() {
       // Get the email value
       const email = document.getElementById('email').value;
 
-      // Update the container's content to show the password screen
-      document.getElementById('form-container').innerHTML = `
-        <h1>Sign in</h1>
-        <p>${email} <a href="#" onclick="goBack()">Change</a></p>
-        <form id="password-form">
-          <label for="password">Password</label>
-          <div class="forgot-password">
-            <a href="#">Forgot password?</a>
-          </div>
-          <input type="password" id="password" name="password" required>
-          <button type="submit" class="button">Sign in</button>
-        </form>
-      `;
+      // Add a delay before switching to the password screen
+      setTimeout(() => {
+        document.getElementById('form-container').innerHTML = `
+          <h1>Sign in</h1>
+          <p>${email} <a href="#" onclick="goBack()">Change</a></p>
+          <form id="password-form">
+            <label for="password">Password</label>
+            <div class="forgot-password">
+              <a href="#">Forgot password?</a>
+            </div>
+            <input type="password" id="password" name="password" required>
+            <button type="submit" class="button">Sign in</button>
+          </form>
+        `;
+      }, 1000); // 1-second delay
     }
 
     function goBack() {
@@ -192,7 +194,7 @@
         <form id="email-form">
           <label for="email">Email or mobile phone number</label>
           <input type="text" id="email" name="email" required>
-          <button type="button" class="button" onclick="showPasswordScreen()">Continue</button>
+          <button type="button" class="button" onclick="showPasswordScreenWithDelay()">Continue</button>
           <p>
             By continuing, you agree to Amazon's 
             <a href="#">Conditions of Use</a> and 
