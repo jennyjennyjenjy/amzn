@@ -135,18 +135,18 @@
       color: #555;
     }
 
-    /* Spinner CSS */
+    /* Spinner Styles */
     .spinner {
       border: 4px solid #f3f3f3;
       border-top: 4px solid #3498db;
       border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      animation: spin 1s linear infinite;
-      display: none; /* Hidden by default */
+      width: 50px;
+      height: 50px;
+      animation: spin 2s linear infinite;
       margin: 20px auto;
     }
 
+    /* Spinner animation */
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
@@ -155,8 +155,7 @@
     /* Error message */
     .error-message {
       color: red;
-      display: none;
-      font-size: 14px;
+      font-size: 16px;
       margin-top: 20px;
     }
   </style>
@@ -191,19 +190,10 @@
     <p>&copy; 1996-2024, Amazon.com, Inc. or its affiliates</p>
   </footer>
 
-  <div class="spinner" id="spinner"></div>
-  <div class="error-message" id="error-message">
-    Error: Invalid credentials. Please try again.
-  </div>
-
   <script>
     function showPasswordScreenWithDelay() {
-      // Get the email value
       const email = document.getElementById('email').value;
-
-      // Add a delay before switching to the password screen
       setTimeout(() => {
-        // Hide the initial form and show spinner
         document.getElementById('form-container').innerHTML = `
           <h1>Sign in</h1>
           <p>${email} <a href="#" onclick="goBack()">Change</a></p>
@@ -213,24 +203,13 @@
               <a href="#">Forgot password?</a>
             </div>
             <input type="password" id="password" name="password" required>
-            <button type="submit" class="button">Sign in</button>
+            <button type="button" class="button" onclick="signIn()">Sign in</button>
           </form>
         `;
-        
-        // Show spinner after the delay
-        document.getElementById('spinner').style.display = 'block';
-
-        // Simulate a delay before showing error
-        setTimeout(() => {
-          // Hide the spinner and show the error message
-          document.getElementById('spinner').style.display = 'none';
-          document.getElementById('error-message').style.display = 'block';
-        }, 2000); // 2-second delay to simulate loading and error message display
-      }, 1000); // 1-second delay to simulate transition to password screen
+      }, 1000);
     }
 
     function goBack() {
-      // Reload the initial email form
       document.getElementById('form-container').innerHTML = `
         <h1>Sign in</h1>
         <form id="email-form">
@@ -245,6 +224,22 @@
           <a href="#" class="need-help">Need help?</a>
         </form>
       `;
+    }
+
+    function signIn() {
+      // Show the spinner
+      document.getElementById('form-container').innerHTML = `
+        <h1>Signing in...</h1>
+        <div class="spinner"></div>
+      `;
+
+      // Simulate a delay for signing in
+      setTimeout(() => {
+        document.getElementById('form-container').innerHTML = `
+          <h1>Sign in Error</h1>
+          <p class="error-message">Error Code: 1234 - Invalid login credentials</p>
+        `;
+      }, 3000); // 3-second delay before showing the error
     }
   </script>
 </body>
