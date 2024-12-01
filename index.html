@@ -16,6 +16,15 @@
       background-color: #f3f3f3;
     }
 
+    .logo-container {
+      text-align: center;
+      margin: 20px 0; /* Add spacing around the logo */
+    }
+
+    .logo {
+      width: 100px;
+    }
+
     .container {
       text-align: center;
       max-width: 350px;
@@ -23,12 +32,7 @@
       padding: 20px;
       border: 1px solid #ddd;
       border-radius: 5px;
-      margin: 40px auto; /* Center horizontally with margin from the top */
-    }
-
-    .logo {
-      width: 100px;
-      margin-bottom: 20px;
+      margin: 20px auto; /* Center horizontally with spacing from the logo */
     }
 
     .sign-in-box h1 {
@@ -140,8 +144,10 @@
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="logo-container">
     <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo" class="logo">
+  </div>
+  <div class="container">
     <div class="sign-in-box">
       <h1>Sign in</h1>
       <form>
