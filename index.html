@@ -17,17 +17,43 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       min-height: 100vh;
     }
 
+    .new-account-section {
+      text-align: center;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .new-account-section p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .create-account-button {
+      background-color: #e7e9ec;
+      border: 1px solid #a6a6a6;
+      border-radius: 3px;
+      padding: 10px;
+      width: 100%;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .create-account-button:hover {
+      background-color: #d6d8db;
+    }
+
     .container {
-      text-align: top;
+      text-align: center;
       max-width: 350px;
       background-color: white;
-      padding: 30px;
+      padding: 20px;
       border: 1px solid #ddd;
       border-radius: 5px;
+      margin-top: 20px; /* Margin for spacing from the top of the page */
     }
 
     .logo {
@@ -99,33 +125,10 @@
       margin-bottom: 20px;
     }
 
-    .new-account {
-      margin-top: 20px;
-    }
-
-    .new-account p {
-      font-size: 14px;
-      color: #555;
-    }
-
-    .create-account-button {
-      background-color: #e7e9ec;
-      border: 1px solid #a6a6a6;
-      border-radius: 3px;
-      padding: 10px;
-      width: 100%;
-      font-size: 14px;
-      cursor: pointer;
-    }
-
-    .create-account-button:hover {
-      background-color: #d6d8db;
-    }
-
     footer {
       text-align: center;
       font-size: 12px;
-      margin-top: 20px;
+      margin-top: 40px;
     }
 
     footer a {
@@ -141,6 +144,11 @@
   </style>
 </head>
 <body>
+  <div class="new-account-section">
+    <p>New to Amazon?</p>
+    <button class="create-account-button">Create your Amazon account</button>
+  </div>
+  
   <div class="container">
     <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo" class="logo">
     <div class="sign-in-box">
@@ -158,12 +166,9 @@
       </form>
       <div class="divider"></div>
       <a href="#" class="business-link">Shop on Amazon Business</a>
-      <div class="new-account">
-        <p>New to Amazon?</p>
-        <button class="create-account-button">Create your Amazon account</button>
-      </div>
     </div>
   </div>
+  
   <footer>
     <a href="#">Conditions of Use</a>
     <a href="#">Privacy Notice</a>
